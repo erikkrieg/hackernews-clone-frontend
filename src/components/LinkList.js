@@ -3,13 +3,13 @@ import { graphql, gql } from 'react-apollo'
 import Link from './Link'
 
 const ALL_LINKS_QUERY = gql`
-  query AllLinksQuery {
-    allLinks {
-      id
-      url
-      description
+    query AllLinksQuery {
+        allLinks {
+            id
+            url
+            description
+        }
     }
-  }
 `
 
 class LinkList extends Component {
@@ -28,10 +28,10 @@ class LinkList extends Component {
         ]
         return (
             <div>
-                {linksToRender.map(link => (<Link key={link.id} link={link}/>))}
+                {linksToRender.map(link => <Link key={link.id} link={link} />)}
             </div>
         )
     }
 }
 
-export default graphql(ALL_LINKS_QUERY, { name: 'allLinksQuery' }) (LinkList)
+export default graphql(ALL_LINKS_QUERY, { name: 'allLinksQuery' })(LinkList)
