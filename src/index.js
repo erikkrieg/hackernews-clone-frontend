@@ -13,7 +13,7 @@ const client = new ApolloClient({ networkInterface })
 ReactDOM.render(
     <ApolloProvider client={client}>
         <App />
-    </ApolloProvider>, 
+    </ApolloProvider>,
     document.getElementById('root')
 )
 registerServiceWorker()
