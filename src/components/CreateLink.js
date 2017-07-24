@@ -5,7 +5,6 @@ const CREATE_LINK_MUTATION = gql`
     mutation CreateLinkMutation($description: String!, $url: String!) {
         createLink(description: $description, url: $url) {
             id
-            createdAt
             url
             description
         }
@@ -43,8 +42,11 @@ class CreateLink extends Component {
     }
 
     _createLink = async () => {
-        // todo ...
+        const { url, description } = this.state
+        await this.props.createLinkMutation({
+            variables: { url, description }
+        })
     }
 }
 
-export default graphql(CREATE_LINK_MUTATION, { name: 'createLinkMutation ' })(CreateLink)
+export default graphql(CREATE_LINK_MUTATION, { name: 'createLinkMutation' })(CreateLink)
