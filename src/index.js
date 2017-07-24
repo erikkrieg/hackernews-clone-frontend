@@ -10,18 +10,21 @@ import registerServiceWorker from './registerServiceWorker'
 const networkInterface = createNetworkInterface({
     uri: 'http://localhost:3000/graphql'
 })
-networkInterface.use([
-    {
-        applyMiddleware(req, next) {
-            if (!req.options.headers) {
-                req.options.headers = {}
-            }
-            const token = localStorage.getItem(GC_AUTH_TOKEN)
-            req.options.headers.authorization = token ? `Bearer ${token}` : null
-            next()
-        }
-    }
-])
+// This is from the tutorial but does not actually work...
+// 
+// networkInterface.use([
+//     {
+//         applyMiddleware(req, next) {
+//             console.log('test')
+//             if (!req.options.headers) {
+//                 req.options.headers = {}
+//             }
+//             const token = localStorage.getItem(GC_AUTH_TOKEN)
+//             req.options.headers.authorization = token ? `Bearer ${token}` : null
+//             next()
+//         }
+//     }
+// ])
 const client = new ApolloClient({ networkInterface })
 
 ReactDOM.render(
