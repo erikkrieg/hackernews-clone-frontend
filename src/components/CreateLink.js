@@ -46,6 +46,7 @@ class CreateLink extends Component {
         await this.props.createLinkMutation({
             variables: { url, description }
         })
+        this.props.history.push(`/`)
     }
 }
 
