@@ -1,4 +1,16 @@
 import React, { Component } from 'react'
+import { graphql, gql } from 'react-apollo'
+
+const CREATE_LINK_MUTATION = gql`
+    mutation CreateLinkMutation($description: String!, $url: String!) {
+        createLink(description: $description, url: $url) {
+            id
+            createdAt
+            url
+            description
+        }
+    }
+`
 
 class CreateLink extends Component {
     state = {
@@ -35,4 +47,4 @@ class CreateLink extends Component {
     }
 }
 
-export default CreateLink
+export default graphql(CREATE_LINK_MUTATION, { name: 'createLinkMutation ' })(CreateLink)
